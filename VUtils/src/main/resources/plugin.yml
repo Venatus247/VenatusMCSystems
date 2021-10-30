@@ -1,0 +1,8 @@
+name: VUtils
+author: VenatusSaw
+version: 1.0
+main: de.venatus247.vutils.Main
+
+commands:
+  timer:
+    description: Setup the play time timer
