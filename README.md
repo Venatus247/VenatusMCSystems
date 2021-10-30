@@ -1,6 +1,8 @@
-# MC-LevelBorder
-Play the level=border project from BastiGHG on your own
+# Venatus MC Systems
+All plugins that are part of Venatus' MC Systems collection
 
-### Upcoming Features
+### Current Features (VUtils)
 - Timer (display your time spent playing)
-- Code improvement (Not improtant for features, but for clear code and understanding)
+
+### Current Features (LevelBorder)
+- Play the level=border project from BastiGHG on your own
