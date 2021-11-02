@@ -1,6 +1,10 @@
 name: LevelBorder
 author: VenatusSaw
-version: 1.0
+version: 1.01
 main: de.venatus247.levelborder.LevelBorder
 depend:
   - VUtils
+
+commands:
+  levelborder:
+    description: Setup the level border

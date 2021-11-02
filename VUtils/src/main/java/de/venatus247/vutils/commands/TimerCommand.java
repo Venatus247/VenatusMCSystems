@@ -10,7 +10,6 @@ import org.bukkit.command.CommandSender;
 public class TimerCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
-        sender.sendMessage("Command triggered");
         if(args.length == 0) {
             //TODO help
             return true;
@@ -28,7 +27,7 @@ public class TimerCommand implements CommandExecutor {
             return true;
         }
 
-        if(args[0].equalsIgnoreCase("start")) {
+        if(args[0].equalsIgnoreCase("start") || args[0].equalsIgnoreCase("resume")) {
             if(!sender.hasPermission("vutils.timer.toggle"))
                 return true;
 
@@ -38,7 +37,7 @@ public class TimerCommand implements CommandExecutor {
             return true;
         }
 
-        if(args[0].equalsIgnoreCase("stop")) {
+        if(args[0].equalsIgnoreCase("stop") || args[0].equalsIgnoreCase("pause")) {
             if(!sender.hasPermission("vutils.timer.toggle"))
                 return true;
 

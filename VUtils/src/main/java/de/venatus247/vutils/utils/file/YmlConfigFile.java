@@ -1,6 +1,7 @@
 package de.venatus247.vutils.utils.file;
 
 import org.bukkit.Color;
+import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
@@ -105,6 +106,9 @@ public abstract class YmlConfigFile {
         return config.getColor(path);
     }
 
+    public Location getLocation(String path) {
+        return config.getLocation(path);
+    }
 
     public void set(String path, Object val) {
         config.set(path, val);
