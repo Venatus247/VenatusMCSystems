@@ -7,7 +7,7 @@
     <groupId>de.venatus247</groupId>
     <artifactId>VenatusMCSystems</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <modules>
         <module>VUtils</module>
         <module>LevelBorder</module>
