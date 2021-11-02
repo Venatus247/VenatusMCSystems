@@ -13,4 +13,8 @@ public class Logger {
         VUtils.getInstance().getConsole().sendMessage(s);
     }
 
+    public void error(String s) {
+        VUtils.getInstance().getConsole().sendMessage("§c" + s);
+    }
+
 }
