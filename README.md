@@ -6,3 +6,4 @@ All plugins that are part of Venatus' MC Systems collection
 
 ### Current Features (LevelBorder)
 - Play the level=border project from BastiGHG on your own
+- Your levels and experience are synchronized with every other player

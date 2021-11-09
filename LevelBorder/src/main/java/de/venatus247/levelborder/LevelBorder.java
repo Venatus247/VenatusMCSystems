@@ -12,6 +12,7 @@ import org.bukkit.World;
 import org.bukkit.WorldBorder;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,6 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LevelBorder extends JavaPlugin {
+
+    private boolean vUtilsLoaded = false;
+    private static final String vUtilsPluginName = "VUtils";
+    private static final float vUtilsRequiredVersion = 1.01f;
+    private static final String vUtilsPluginUrl = "https://www.spigotmc.org/resources/vutils.97327/";
 
     public static final String prefix = "§7[§6LevelBorder§7] ";
 
@@ -41,8 +47,32 @@ public class LevelBorder extends JavaPlugin {
     private WorldBorder endBorder;
 
     @Override
+    public void onLoad() {
+        Plugin vUtilsPlugin = getServer().getPluginManager().getPlugin(vUtilsPluginName);
+
+        if(vUtilsPlugin == null) {
+            getServer().getConsoleSender().sendMessage(prefix + "§cCould not find plugin '" + vUtilsPluginName + "'!");
+            getServer().getConsoleSender().sendMessage(prefix + "§cYou can download VUtils here: §7" + vUtilsPluginUrl);
+            return;
+        } else {
+            if(Float.parseFloat(vUtilsPlugin.getDescription().getVersion()) < vUtilsRequiredVersion) {
+                getServer().getConsoleSender().sendMessage(prefix + "§cOutdated version of '" + vUtilsPluginName + "' found!");
+                getServer().getConsoleSender().sendMessage(prefix + "§cYou can download the latest version of VUtils here: §7" + vUtilsPluginUrl);
+                return;
+            }
+        }
+        vUtilsLoaded = true;
+    }
+
+    @Override
     public void onEnable() {
         instance = this;
+
+        if(!vUtilsLoaded) {
+            disablePlugin();
+            return;
+        }
+
         try {
             borderConfig = new LevelBorderConfig();
         } catch (IOException e) {
@@ -61,7 +91,8 @@ public class LevelBorder extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        borderConfig.save();
+        if(borderConfig != null)
+            borderConfig.save();
     }
 
     private void disablePlugin() {
