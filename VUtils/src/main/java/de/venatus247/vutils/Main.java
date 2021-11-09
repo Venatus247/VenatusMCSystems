@@ -36,11 +36,11 @@ public class Main extends JavaPlugin {
     }
 
     public static void sendPrefixedMessage(CommandSender receiver, String message) {
-        receiver.sendMessage(VUtils.prefix + " " + message);
+        receiver.sendMessage(VUtils.prefix + message);
     }
 
     public static void sendCommandUsageMessage(CommandSender receiver, String message) {
-        receiver.sendMessage(VUtils.prefix + " " + message);
+        receiver.sendMessage(VUtils.prefix + message);
     }
 
 }
