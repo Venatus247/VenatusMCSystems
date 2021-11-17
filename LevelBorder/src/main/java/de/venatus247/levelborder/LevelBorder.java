@@ -159,6 +159,7 @@ public class LevelBorder extends JavaPlugin {
     }
 
     public void updateBorder(int level, float exp) {
+
         if(level != borderConfig.getLevel()) {
             borderSize = level + 1;
 
@@ -169,6 +170,8 @@ public class LevelBorder extends JavaPlugin {
             borderConfig.setCurrentBorderSize(borderSize);
             borderConfig.save();
         }
+
+        borderConfig.updateLevelAndExp(level, exp);
 
         for(Player players : Bukkit.getOnlinePlayers()) {
             players.setExp(exp);
