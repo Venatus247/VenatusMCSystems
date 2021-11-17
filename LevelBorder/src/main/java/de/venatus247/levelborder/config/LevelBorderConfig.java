@@ -87,6 +87,7 @@ public class LevelBorderConfig extends YmlConfigFile {
     public void updateLevelAndExp(int level, float exp) {
         this.level = level;
         this.exp = exp;
+        this.save();
     }
 
     public void setCurrentBorderSize(int currentBorderSize) {
