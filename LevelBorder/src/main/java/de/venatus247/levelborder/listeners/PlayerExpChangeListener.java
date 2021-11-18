@@ -12,13 +12,13 @@ public class PlayerExpChangeListener implements Listener {
     @EventHandler
     public void onLevelChange(PlayerLevelChangeEvent event) {
         Player player = event.getPlayer();
-        LevelBorder.getInstance().updateBorder(player.getLevel(), player.getExp());
+        LevelBorder.getInstance().updateLevelAndExp(player.getLevel(), player.getExp());
     }
 
     @EventHandler
     public void onExpChange(PlayerExpChangeEvent event) {
         Player player = event.getPlayer();
-        LevelBorder.getInstance().updateBorder(player.getLevel(), player.getExp());
+        LevelBorder.getInstance().updateLevelAndExp(player.getLevel(), player.getExp());
     }
 
 }

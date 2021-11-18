@@ -52,7 +52,7 @@ public abstract class YmlConfigFile {
 
     }
 
-    public boolean save() {
+    protected boolean write() {
         try {
             config.save(file);
             return true;
@@ -60,6 +60,10 @@ public abstract class YmlConfigFile {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public boolean save() {
+        return write();
     }
 
     public Object get(String path) {
