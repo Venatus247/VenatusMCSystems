@@ -2,7 +2,6 @@ package de.venatus247.levelborder.config;
 
 import de.venatus247.vutils.Logger;
 import de.venatus247.vutils.utils.file.YmlConfigFile;
-import org.bukkit.Location;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +12,8 @@ public class LevelBorderConfig extends YmlConfigFile {
     private float exp;
 
     private int currentBorderSize;
-    private long borderExpandTime = 1;
+    private int borderExpandTime;
+    private int borderLevelMultiplier;
 
     public LevelBorderConfig() throws IOException {
         super(new File("plugins/LevelBorder/config.yml"));
@@ -23,7 +23,8 @@ public class LevelBorderConfig extends YmlConfigFile {
     protected void load() {
         super.load();
         currentBorderSize = getInt("border.currentSize");
-        borderExpandTime = getLong("border.expandTime");
+        System.out.println("Got " + currentBorderSize + " from config file");
+        borderExpandTime = getInt("border.expandTime");
         level = getInt("level.level");
         exp = getFloat("level.exp");
     }
@@ -31,7 +32,7 @@ public class LevelBorderConfig extends YmlConfigFile {
     @Override
     public boolean loadDefaults(boolean writeToFile) {
         Logger.getInstance().log("Loading default config");
-        config.addDefault("border.currentSize", 0);
+        config.addDefault("border.currentSize", 1);
         config.addDefault("border.expandTime", 1);
         config.addDefault("level.level", 0);
         config.addDefault("level.exp", 0.0f);
@@ -40,7 +41,7 @@ public class LevelBorderConfig extends YmlConfigFile {
         config.addDefault("world.end.name", "world_the_end");
         if (writeToFile) {
             config.options().copyDefaults(true);
-            return save();
+            write();
         }
 
         return true;
@@ -80,7 +81,7 @@ public class LevelBorderConfig extends YmlConfigFile {
         return currentBorderSize;
     }
 
-    public long getBorderExpandTime() {
+    public int getBorderExpandTime() {
         return borderExpandTime;
     }
 
@@ -93,5 +94,13 @@ public class LevelBorderConfig extends YmlConfigFile {
     public void setCurrentBorderSize(int currentBorderSize) {
         this.currentBorderSize = currentBorderSize;
         this.save();
+    }
+
+    public int getBorderLevelMultiplier() {
+        return borderLevelMultiplier;
+    }
+
+    public void setBorderLevelMultiplier(int borderLevelMultiplier) {
+        this.borderLevelMultiplier = borderLevelMultiplier;
     }
 }

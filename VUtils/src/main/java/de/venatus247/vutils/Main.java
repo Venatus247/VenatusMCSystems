@@ -20,6 +20,9 @@ public class Main extends JavaPlugin {
             e.printStackTrace();
             Bukkit.getPluginManager().disablePlugin(this);
             return;
+        } catch (Exception e) {
+            e.printStackTrace();
+            //TODO disable plugin
         }
         registerCommands();
     }
@@ -42,5 +45,4 @@ public class Main extends JavaPlugin {
     public static void sendCommandUsageMessage(CommandSender receiver, String message) {
         receiver.sendMessage(VUtils.prefix + message);
     }
-
 }

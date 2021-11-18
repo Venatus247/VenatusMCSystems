@@ -21,17 +21,25 @@ public class LevelBorderCommand implements CommandExecutor {
                 return true;
             }
 
-            if(!(sender instanceof Player)) {
+            if(!(sender instanceof Player player)) {
                 sendSenderNeedToBePlayerMessage(sender);
                 return true;
             }
-
-            Player player = (Player) sender;
 
             Location location = new Location(player.getWorld(), player.getLocation().getBlockX(), player.getLocation().getBlockY(), player.getLocation().getBlockZ());
 
             LevelBorder.getInstance().setWorldSpawnLocation(player.getWorld(), location);
             sender.sendMessage(LevelBorder.prefix + "§aDie Border-Location wurde an deine Position gesetzt.");
+            return true;
+        }
+        if(args[0].equalsIgnoreCase("refresh")) {
+            if(!(sender instanceof Player player)) {
+                sendSenderNeedToBePlayerMessage(sender);
+                return true;
+            }
+
+            LevelBorder.getInstance().setPlayerBorder(player);
+            player.sendMessage(LevelBorder.prefix + "§aDeine Border wurde aktualisiert.");
             return true;
         }
 
