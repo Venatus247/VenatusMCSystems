@@ -23,8 +23,8 @@ public class LevelBorderConfig extends YmlConfigFile {
     protected void load() {
         super.load();
         currentBorderSize = getInt("border.currentSize");
-        System.out.println("Got " + currentBorderSize + " from config file");
         borderExpandTime = getInt("border.expandTime");
+        borderLevelMultiplier = getInt("border.multiplier");
         level = getInt("level.level");
         exp = getFloat("level.exp");
     }
@@ -34,6 +34,7 @@ public class LevelBorderConfig extends YmlConfigFile {
         Logger.getInstance().log("Loading default config");
         config.addDefault("border.currentSize", 1);
         config.addDefault("border.expandTime", 1);
+        config.addDefault("border.multiplier", 1);
         config.addDefault("level.level", 0);
         config.addDefault("level.exp", 0.0f);
         config.addDefault("world.overworld.name", "world");
@@ -52,6 +53,7 @@ public class LevelBorderConfig extends YmlConfigFile {
         Logger.getInstance().log("Setting size to " + currentBorderSize);
         set("border.currentSize", currentBorderSize);
         set("border.expandTime", borderExpandTime);
+        set("border.multiplier", borderLevelMultiplier);
         set("level.level", level);
         set("level.exp", exp);
         return super.save();
