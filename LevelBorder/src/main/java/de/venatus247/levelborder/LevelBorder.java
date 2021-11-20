@@ -134,7 +134,7 @@ public class LevelBorder extends JavaPlugin {
     }
 
     protected void updateBorder(int size) {
-        borderConfig.setCurrentBorderSize(borderConfig.getCurrentBorderSize());
+        borderConfig.setCurrentBorderSize(size);
         worldBorderController.updateSizeToAll(borderConfig.getCurrentBorderSize(), borderConfig.getBorderExpandTime());
     }
 

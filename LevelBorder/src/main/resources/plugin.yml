@@ -1,6 +1,6 @@
 name: LevelBorder
 author: VenatusSaw
-version: 1.1
+version: 1.11
 main: de.venatus247.levelborder.LevelBorder
 softdepend:
   - VUtils
