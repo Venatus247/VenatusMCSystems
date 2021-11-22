@@ -34,7 +34,7 @@ public class LevelBorderConfig extends YmlConfigFile {
         Logger.getInstance().log("Loading default config");
         config.addDefault("border.currentSize", 1);
         config.addDefault("border.expandTime", 1);
-        config.addDefault("border.multiplier", 1);
+        config.addDefault("border.multiplier", 2);
         config.addDefault("level.level", 0);
         config.addDefault("level.exp", 0.0f);
         config.addDefault("world.overworld.name", "world");

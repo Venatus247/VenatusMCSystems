@@ -5,8 +5,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.concurrent.TimeUnit;
-
 public class WorldBorderController {
 
     public void updateSizeToAll(int size, int borderExpandTime) {
@@ -24,7 +22,11 @@ public class WorldBorderController {
     }
 
     private Location getWorldBorderCenter(Player player) {
-        return player.getWorld().getSpawnLocation();
+        Location spawnLocation = player.getWorld().getSpawnLocation();
+        spawnLocation.setX((double) spawnLocation.getBlockX() + 0.5);
+        spawnLocation.setZ((double) spawnLocation.getBlockZ() + 0.5);
+
+        return spawnLocation;
     }
 
 }

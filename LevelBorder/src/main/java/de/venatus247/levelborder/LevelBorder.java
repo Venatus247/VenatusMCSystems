@@ -84,6 +84,7 @@ public class LevelBorder extends JavaPlugin {
         registerCommands();
 
         prepareWorlds();
+        updateLevelAndExp(getLevel(), getExp());
     }
 
     @Override
@@ -151,7 +152,11 @@ public class LevelBorder extends JavaPlugin {
             players.setLevel(level);
         }
 
-        int newSize = level*borderConfig.getBorderLevelMultiplier() + 1;
+        int newSize = switch (level) {
+            case 0 -> 1;
+            default -> borderConfig.getBorderLevelMultiplier() == 1 ? level*borderConfig.getBorderLevelMultiplier() + 1 : level*borderConfig.getBorderLevelMultiplier();
+        };
+
         if(newSize != borderConfig.getCurrentBorderSize()) {
             updateBorder(newSize);
         }
