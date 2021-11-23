@@ -55,7 +55,6 @@ public class LevelBorderConfig extends YmlConfigFile {
 
     @Override
     public boolean save() {
-        Logger.getInstance().log("Setting size to " + currentBorderSize);
         set("border.currentSize", currentBorderSize);
         set("border.expandTime", borderExpandTime);
         set("border.multiplier", borderLevelMultiplier);
@@ -110,15 +109,17 @@ public class LevelBorderConfig extends YmlConfigFile {
 
     public void setNetherEntered(boolean netherEntered) {
         this.netherEntered = netherEntered;
+        save();
     }
 
     public void setEndEntered(boolean endEntered) {
         this.endEntered = endEntered;
+        save();
     }
 
     public void setCurrentBorderSize(int currentBorderSize) {
         this.currentBorderSize = currentBorderSize;
-        this.save();
+        save();
     }
 
     public int getBorderLevelMultiplier() {
