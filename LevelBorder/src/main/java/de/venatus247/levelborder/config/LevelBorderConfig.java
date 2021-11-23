@@ -15,6 +15,9 @@ public class LevelBorderConfig extends YmlConfigFile {
     private int borderExpandTime;
     private int borderLevelMultiplier;
 
+    private boolean netherEntered;
+    private boolean endEntered;
+
     public LevelBorderConfig() throws IOException {
         super(new File("plugins/LevelBorder/config.yml"));
     }
@@ -39,7 +42,9 @@ public class LevelBorderConfig extends YmlConfigFile {
         config.addDefault("level.exp", 0.0f);
         config.addDefault("world.overworld.name", "world");
         config.addDefault("world.nether.name", "world_nether");
+        config.addDefault("world.nether.entered", false);
         config.addDefault("world.end.name", "world_the_end");
+        config.addDefault("world.end.entered", false);
         if (writeToFile) {
             config.options().copyDefaults(true);
             write();
@@ -56,7 +61,15 @@ public class LevelBorderConfig extends YmlConfigFile {
         set("border.multiplier", borderLevelMultiplier);
         set("level.level", level);
         set("level.exp", exp);
+        set("world.nether.entered", netherEntered);
+        set("world.end.entered", endEntered);
         return super.save();
+    }
+
+    public void updateLevelAndExp(int level, float exp) {
+        this.level = level;
+        this.exp = exp;
+        this.save();
     }
 
     public int getLevel() {
@@ -87,10 +100,20 @@ public class LevelBorderConfig extends YmlConfigFile {
         return borderExpandTime;
     }
 
-    public void updateLevelAndExp(int level, float exp) {
-        this.level = level;
-        this.exp = exp;
-        this.save();
+    public boolean isNetherEntered() {
+        return netherEntered;
+    }
+
+    public boolean isEndEntered() {
+        return endEntered;
+    }
+
+    public void setNetherEntered(boolean netherEntered) {
+        this.netherEntered = netherEntered;
+    }
+
+    public void setEndEntered(boolean endEntered) {
+        this.endEntered = endEntered;
     }
 
     public void setCurrentBorderSize(int currentBorderSize) {

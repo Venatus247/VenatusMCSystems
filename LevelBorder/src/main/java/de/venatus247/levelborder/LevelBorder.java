@@ -6,12 +6,11 @@ import de.venatus247.levelborder.controllers.WorldBorderController;
 import de.venatus247.levelborder.listeners.EnchantItemListener;
 import de.venatus247.levelborder.listeners.PlayerExpChangeListener;
 import de.venatus247.levelborder.listeners.PlayerJoinListener;
-import de.venatus247.levelborder.listeners.PlayerWorldChangeListener;
+import de.venatus247.levelborder.listeners.PlayerChangedWorldListener;
 import de.venatus247.vutils.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.WorldBorder;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -106,7 +105,7 @@ public class LevelBorder extends JavaPlugin {
         listeners.add(new PlayerExpChangeListener());
         listeners.add(new EnchantItemListener());
         listeners.add(new PlayerJoinListener());
-        listeners.add(new PlayerWorldChangeListener());
+        listeners.add(new PlayerChangedWorldListener());
 
         for(Listener listener : listeners) {
             pluginManager.registerEvents(listener, this);
@@ -172,4 +171,7 @@ public class LevelBorder extends JavaPlugin {
         return worldBorderController;
     }
 
+    public LevelBorderConfig getBorderConfig() {
+        return borderConfig;
+    }
 }
