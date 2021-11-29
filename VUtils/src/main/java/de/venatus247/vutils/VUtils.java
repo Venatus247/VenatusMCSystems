@@ -1,7 +1,7 @@
 package de.venatus247.vutils;
 
 import de.venatus247.vutils.utils.file.VUtilsConfig;
-import de.venatus247.vutils.utils.handlers.InventoryGuiHandler;
+import de.venatus247.vutils.utils.handlers.player.InventoryGuiHandler;
 import de.venatus247.vutils.utils.handlers.player.PlayerQuitHandler;
 import de.venatus247.vutils.utils.handlers.timer.PlayTimerHandler;
 import de.venatus247.vutils.utils.handlers.timer.TimerStringFormat;
@@ -32,8 +32,8 @@ public class VUtils {
     private final ConsoleCommandSender console;
 
     private final VUtilsConfig configFile;
-    private final InventoryGuiHandler inventoryGuiHandler;
 
+    private final InventoryGuiHandler inventoryGuiHandler;
     private final PlayTimerHandler timerHandler;
     private final PlayerQuitHandler playerQuitHandler;
 
@@ -66,7 +66,6 @@ public class VUtils {
         main.getServer().getServicesManager().register(IWorldBorderApi.class, worldBorderApi, main, ServicePriority.High);
 
         inventoryGuiHandler = new InventoryGuiHandler();
-
         playerQuitHandler = new PlayerQuitHandler();
 
         timerHandler = new PlayTimerHandler(TimerStringFormatter.getFromFormat(configFile.getTimerStyle()), configFile.getTimerTime());
@@ -76,6 +75,7 @@ public class VUtils {
 
     private void registerHandlersInPluginManager(PluginManager pluginManager) {
         pluginManager.registerEvents(playerQuitHandler, main);
+        pluginManager.registerEvents(inventoryGuiHandler, main);
     }
 
     public Main getMain() {
